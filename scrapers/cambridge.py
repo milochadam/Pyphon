@@ -20,11 +20,17 @@ class CambridgeScraper(Scraper):
         try:
             br = soup.find('span', class_='uk dpron-i').find('span', class_='ipa dipa lpr-2 lpl-1').text
         except AttributeError:
-            br = soup.find('span', class_='us dpron-i').find('span', class_='ipa dipa lpr-2 lpl-1').text
+            br = None
 
         try:
             am = soup.find('span', class_='us dpron-i').find('span', class_='ipa dipa lpr-2 lpl-1').text
         except AttributeError:
-            am = soup.find('span', class_='uk dpron-i').find('span', class_='ipa dipa lpr-2 lpl-1').text
+            am = None
+
+        if br is None and am is None:
+            return None
+
+        am = am or br
+        br = br = am
 
         return Item(word=word, br=br, am=am, source=website)

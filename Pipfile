@@ -12,6 +12,7 @@ pylint = "*"
 lxml = "*"
 bs4 = "*"
 requests = "*"
+termcolor = "*"
 
 [requires]
 python_version = "3.8"

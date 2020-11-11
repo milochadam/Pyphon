@@ -5,9 +5,16 @@ import sys
 from dataclasses import dataclass, field
 from typing import List
 
+from termcolor import colored
+
 from database import Database
 from scrapers.cambridge import CambridgeScraper
-from settings import DATABASE_PATH
+from settings import (
+    COLOR_CACHED,
+    COLOR_NOT_FOUND,
+    COLOR_SCRAPED,
+    DATABASE_PATH,
+)
 
 
 @dataclass
@@ -37,14 +44,14 @@ def main() -> int:
     for word in args.sentence:
         try:
             [candidate] = db.get_all(word)
-            result.append(candidate.br)
+            result.append(colored(candidate.br, COLOR_CACHED))
         except ValueError:
             item = CambridgeScraper().scrape(word)
             if item is None:
-                result.append(word)
+                result.append(colored(word, COLOR_NOT_FOUND))
             else:
                 db.insert(item)
-                result.append(item.br)
+                result.append(colored(item.br, COLOR_SCRAPED))
     logging.debug('Result: %s', result)
 
     print(' '.join(result))
