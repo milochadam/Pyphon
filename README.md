@@ -3,7 +3,7 @@
 
 ## Requirements
 ```console
-$ pipenv install
+$ poetry install
 ```
 
 ## Usage:

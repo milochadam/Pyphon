@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "pyphon"
+version = "0.1.0"
+description = ""
+authors = ["Adam Miloch <miloch.adam@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+bs4 = "^0.0.1"
+lxml = "^4.6.1"
+requests = "^2.25.0"
+termcolor = "^1.1.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.8.4"
+pylint = "^2.6.0"
+mypy = "^0.790"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
