@@ -3,8 +3,8 @@ from typing import Optional
 
 import requests
 from bs4 import BeautifulSoup
-from item import Item
 
+from item import Item
 from scrapers.scraper import Scraper
 
 
@@ -15,7 +15,7 @@ class CambridgeScraper(Scraper):
         logging.debug("Scraping `%s` from cambridge dictionary", word)
 
         website = f'{self.WEBSITE}{word}'
-        soup = BeautifulSoup(requests.get(website, headers=self.headers).text, 'lxml')
+        soup = BeautifulSoup(requests.get(website, headers=self.HEADERS).text, 'lxml')
 
         try:
             br = soup.find('span', class_='uk dpron-i').find('span', class_='ipa dipa lpr-2 lpl-1').text
