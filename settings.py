@@ -1,6 +1,8 @@
 from pathlib import Path
 
-DATABASE_PATH = Path('database.db')
+PROJECT_ROOT = Path(__file__).resolve().parent
+
+DATABASE_PATH = PROJECT_ROOT.joinpath('database.db')
 
 COLOR_CACHED = 'green'
 COLOR_SCRAPED = 'yellow'
