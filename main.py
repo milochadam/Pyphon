@@ -9,12 +9,7 @@ from termcolor import colored
 
 from database import Database
 from scrapers.cambridge import CambridgeScraper
-from settings import (
-    COLOR_CACHED,
-    COLOR_NOT_FOUND,
-    COLOR_SCRAPED,
-    DATABASE_PATH,
-)
+from settings import COLOR_CACHED, COLOR_NOT_FOUND, COLOR_SCRAPED, DATABASE_PATH
 
 
 @dataclass
@@ -36,6 +31,7 @@ def main() -> int:
     args = get_args()
     if args.verbose:
         logging.basicConfig(level=logging.DEBUG, format='%(name)s - %(levelname)s - %(message)s')
+    logging.debug("Instantiating a database in `%s`", DATABASE_PATH)
     db = Database(DATABASE_PATH)
     db.create(exists_ok=True)
 
