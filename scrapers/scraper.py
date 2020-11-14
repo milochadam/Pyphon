@@ -16,5 +16,5 @@ class Scraper(ABC):
     }
 
     @abstractmethod
-    def scrape_data(self, word: str) -> Item:
+    def scrape(self, word: str) -> Item:
         return NotImplemented
