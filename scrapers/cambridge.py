@@ -31,6 +31,6 @@ class CambridgeScraper(Scraper):
             return None
 
         am = am or br
-        br = br = am
+        br = br or am
 
         return Item(word=word, br=br, am=am, source=website)
