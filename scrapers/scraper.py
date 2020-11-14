@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Optional
 
 from item import Item
 
@@ -16,5 +17,5 @@ class Scraper(ABC):
     }
 
     @abstractmethod
-    def scrape(self, word: str) -> Item:
+    def scrape(self, word: str) -> Optional[Item]:
         return NotImplemented
